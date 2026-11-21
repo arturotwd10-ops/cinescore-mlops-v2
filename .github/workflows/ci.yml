@@ -23,5 +23,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install pytest httpx
 
+      - name: Syntax check scripts and DAG
+        run: python -m py_compile app/main.py src/preprocess.py src/train.py monitoring/drift_check.py dags/cinescore_dag.py
+
       - name: Run API tests
         run: python -m pytest -q

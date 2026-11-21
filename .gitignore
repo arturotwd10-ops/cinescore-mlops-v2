@@ -9,3 +9,4 @@ mlruns/
 *.db
 *.sqlite*
 .DS_Store
+data/raw/movies.csv

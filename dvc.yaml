@@ -16,3 +16,12 @@ stages:
     outs:
       - models/champion_model.joblib
       - models/metrics_summary.json
+
+  monitor:
+    cmd: python monitoring/drift_check.py
+    deps:
+      - monitoring/drift_check.py
+      - data/processed/train.csv
+      - data/processed/test.csv
+    outs:
+      - monitoring/drift_report.json

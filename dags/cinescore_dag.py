@@ -14,7 +14,7 @@ default_args = {
 with DAG(
     dag_id="cinescore_mlops_pipeline",
     default_args=default_args,
-    description="Preprocesamiento, entrenamiento con MLflow y validacion de API",
+    description="Preprocesamiento, entrenamiento con MLflow, monitoreo de drift y pruebas",
     schedule="@weekly",
     start_date=datetime(2026, 1, 1),
     catchup=False,
@@ -30,9 +30,14 @@ with DAG(
         bash_command=f"cd {PROJECT_DIR} && {PYTHON_BIN} src/train.py",
     )
 
+    monitor = BashOperator(
+        task_id="check_data_drift",
+        bash_command=f"cd {PROJECT_DIR} && {PYTHON_BIN} monitoring/drift_check.py",
+    )
+
     run_tests = BashOperator(
         task_id="verify_api_tests",
         bash_command=f"cd {PROJECT_DIR} && {PYTHON_BIN} -m pytest -q",
     )
 
-    preprocess >> train >> run_tests
+    preprocess >> train >> monitor >> run_tests
