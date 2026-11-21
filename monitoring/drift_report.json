@@ -1,0 +1,25 @@
+{
+  "release_year": {
+    "ref_mean": 1995.329,
+    "cur_mean": 1995.1178,
+    "rel_diff": 0.0001,
+    "drift_detected": false
+  },
+  "imdb_rating_count": {
+    "ref_mean": 6946.7239,
+    "cur_mean": 6880.0106,
+    "rel_diff": 0.0096,
+    "drift_detected": false
+  },
+  "imdb_rating": {
+    "ref_mean": 6.1382,
+    "cur_mean": 6.1404,
+    "rel_diff": 0.0004,
+    "drift_detected": false
+  },
+  "genre": {
+    "ref_top_genre": "drama",
+    "cur_top_genre": "drama",
+    "drift_detected": false
+  }
+}

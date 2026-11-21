@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-11-21T22:18:29.705645+00:00",
+  "rating_threshold": "> 3.5",
+  "champion": "logistic_regression",
+  "best_f1": 0.9768,
+  "models": {
+    "logistic_regression": {
+      "accuracy": 0.9546,
+      "f1_score": 0.9768,
+      "roc_auc": 0.7863
+    },
+    "random_forest": {
+      "accuracy": 0.9544,
+      "f1_score": 0.9767,
+      "roc_auc": 0.8217
+    },
+    "svm_rbf": {
+      "accuracy": 0.9546,
+      "f1_score": 0.9768,
+      "roc_auc": 0.5573
+    }
+  }
+}
