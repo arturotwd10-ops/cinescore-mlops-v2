@@ -1,0 +1,25 @@
+cat << 'EOF' > README.md
+# CineScore MLOps v2
+
+Predicción de calificación cinematográfica (umbral `7.0`) combinando Regresión Logística (`scikit-learn`) con ajustes históricos por género, década y director, expuesta mediante **FastAPI**.
+
+## Stack
+- **API y UI:** FastAPI (`app/main.py`, `app/static/index.html`)
+- **ML y tracking:** scikit-learn, MLflow (`src/train.py`)
+- **Datos y pipeline:** DVC (`dvc.yaml`, `src/preprocess.py`)
+- **Monitoreo:** reporte de drift (`monitoring/drift_check.py`)
+- **Orquestación:** Apache Airflow (`dags/cinescore_dag.py`)
+- **Contenedor:** Docker / Colima (`Dockerfile`)
+- **CI:** GitHub Actions + `pytest` (`.github/workflows/ci.yml`, `tests/test_api.py`)
+
+## Uso rápido
+
+```bash
+# Pruebas
+python -m pytest -q
+
+# Levantar API en local
+uvicorn app.main:app --reload --port 8000
+
+# Pipeline DVC
+dvc repro
